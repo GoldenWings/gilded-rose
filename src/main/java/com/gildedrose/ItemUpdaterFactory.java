@@ -1,16 +1,16 @@
 package com.gildedrose;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ItemUpdaterFactory {
+    private static final Map<String, ItemUpdater> UPDATERS = new HashMap<>();
+    static {
+        UPDATERS.put(ItemNames.AGED_BRIE, new AgedBrieUpdater());
+        UPDATERS.put(ItemNames.BACKSTAGE_PASS, new BackstagePassUpdater());
+        UPDATERS.put(ItemNames.SULFURAS, new SulfurasUpdater());
+    }
+
     public static ItemUpdater getItemUpdater(Item item) {
-        switch (item.name) {
-            case "Aged Brie":
-                return new AgedBrieUpdater();
-            case "Backstage passes to a TAFKAL80ETC concert":
-                return new BackstagePassUpdater();
-            case "Sulfuras, Hand of Ragnaros":
-                return new SulfurasUpdater();
-            default:
-                return new DefaultItemUpdater();
-        }
+        return UPDATERS.getOrDefault(item.name, new DefaultItemUpdater());
     }
 }

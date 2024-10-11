@@ -3,14 +3,14 @@ package com.gildedrose;
 public class BackstagePassUpdater implements ItemUpdater {
     @Override
     public void update(Item item) {
-        if (item.quality < 50) {
-            item.quality++;
-            if (item.sellIn < 11 && item.quality < 50) {
-                item.quality++;
-            }
-            if (item.sellIn < 6 && item.quality < 50) {
-                item.quality++;
-            }
+        ItemQualityUtils.increaseQuality(item);
+
+        if (item.sellIn < 11) {
+            ItemQualityUtils.increaseQuality(item);
+        }
+
+        if (item.sellIn < 6) {
+            ItemQualityUtils.increaseQuality(item);
         }
 
         item.sellIn--;
