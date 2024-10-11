@@ -8,6 +8,7 @@ public class ItemUpdaterFactory {
         UPDATERS.put(ItemNames.AGED_BRIE, new AgedBrieUpdater());
         UPDATERS.put(ItemNames.BACKSTAGE_PASS, new BackstagePassUpdater());
         UPDATERS.put(ItemNames.SULFURAS, new SulfurasUpdater());
+        UPDATERS.put(ItemNames.CONJURED, new ConjuredItemUpdater());
     }
 
     public static ItemUpdater getItemUpdater(Item item) {
